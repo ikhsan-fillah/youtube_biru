@@ -1,13 +1,11 @@
 <?php
-// config.php
+require_once 'config.php';
 
-$host = 'localhost'; // Your database host
-$dbname = 'youtube_biru'; // Your database name
-$username = 'root'; // Your database username
-$password = ''; // Your database password
-
-$conn = new mysqli($host,$dbname,$username,$password);
-if ($connect->connect_error) {
-    die('maaf koneksi gagal: '.$connect->connect_error);
+// Menggunakan pengaturan dari config.php
+$conn = new mysqli(DB_HOST, DB_USER, DB_PASS, DB_NAME);
+if ($conn->connect_error) {
+    die('maaf koneksi gagal: '.$conn->connect_error);
+} else {
+    echo 'koneksi berhasil';
 }
 ?>
