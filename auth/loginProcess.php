@@ -1,38 +1,43 @@
 <?php
 
-session_start();
-require_once '../config/database.php'; // Include your database connection file
+session_start(); //menyimpan pengguna yang login
+require_once '../config/database.php'; //include db dan file di load sekali saja
 
-if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-    $email = $_POST['email'];
+if ($_SERVER['REQUEST_METHOD'] == 'POST') { //memerikas apakah metode permintaan adl POST
+    //mengambil niilai email dan password dari form login
+    $email = $_POST['email']; 
     $password = $_POST['password'];
 
-    // Check if email and password are not empty
+    //Cek jika email dan password tidak kosong
     if (!empty($email) && !empty($password)) {
-        // Prepare and execute the query
-        $stmt = $conn->prepare("SELECT * FROM users WHERE email = ?");
-        $stmt->bind_param("s", $email);
-        $stmt->execute();
-        $result = $stmt->get_result();
+        //menyiapkan query untuk mengambil data user berdasarkan email
+        $stmt = $conn->prepare("SELECT * FROM users WHERE email = ?"); 
+        $stmt->bind_param("s", $email); //mengikat parameter email ke query
+        $stmt->execute(); //mengeksekusi query
+        $result = $stmt->get_result(); //mengambil hasil query
 
-        // Check if user exists
+        //cek jika user telah ada
         if ($result->num_rows > 0) {
-            $user = $result->fetch_assoc();
-            // Verify the password
+            $user = $result->fetch_assoc(); //mengambil data user dari hasil query
+            //cek password yang diinputkan dengan password yang ada di database
             if (password_verify($password, $user['password'])) {
-                // Set session variables and redirect to index.php
+                //jika password benar, simpan data user ke session
                 $_SESSION['user_id'] = $user['user_id'];
                 $_SESSION['username'] = $user['username'];
-                header("Location: ../pages/index.php");
-                exit();
+                //redirect ke halaman index setelah login
+                header("Location: ../pages/index.php"); 
+                exit(); //akhiri eksekusi
             } else {
-                echo "Invalid password.";
+                //jika password salah
+                echo "Password salah.";
             }
         } else {
-            echo "No user found with this email.";
+            //jika user tidak ditemukan
+            echo "User tidak ditemukan.";
         }
     } else {
-        echo "Please fill in all fields.";
+        //jika email dan password kosong
+        echo "Email dan password wajib diisikan.";
     }
 }
 ?>

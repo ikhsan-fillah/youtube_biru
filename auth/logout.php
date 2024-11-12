@@ -1,10 +1,11 @@
 <?php
+//mulaikan session
 session_start();
 
-// Destroy all session data
+//hapus session
 session_destroy();
 
-// Redirect to the login page or home page
+//redirect ke halaman index sebelum login
 header("Location: ../index.php");
 exit();
 ?>
