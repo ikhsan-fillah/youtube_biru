@@ -15,8 +15,7 @@
         <div>
             <div class="flex items-center mr-9">
                 <button type="button" class="text-white focus:outline-none bg-red-500 rounded-full py-2 px-4 mr-4 hover:bg-red-600 focus:ring-2 focus:ring-red-500"><i class="fa-solid fa-video"></i></button>
-                <a href="/auth/login.php"><button type="button" class="text-white focus:outline-none bg-red-500 rounded-full py-2 px-4 mr-4 hover:bg-red-600 focus:ring-2 focus:ring-red-500">Log In</button"></a>
-                <a href="/auth/signup.php"><button type="button" class="text-white focus:outline-none bg-red-500 rounded-full py-2 px-4 hover:bg-red-600 focus:ring-2 focus:ring-red-500">Sign Up</button></a>
+                <a href="/auth/login.php"><button type="button" class="text-white bg-red-500 py-2 px-4 mr-4 hover:bg-red-600 focus:ring-2 focus:ring-red-500 shadow-lg rounded-tl-lg rounded-br-lg focus:outline-none focus:shadow-outline">Log In</button"></a>
             </div>
         </div>
     </nav>

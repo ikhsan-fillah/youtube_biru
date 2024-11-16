@@ -1,6 +1,6 @@
 <div class="bg-ytBlue text-white w-72 p-6 overflow-y-scroll scrollbar-thin scrollbar-thumb-red-500 scrollbar-track-blue-600">
     <div class="mb-5 mt-1">
-        <a href="#" class="flex items-center">
+        <a href="../pages/index.php" class="flex items-center">
             <i class="fas fa-home mr-2 text-2xl ml-3"></i>
             <span class="font-bold text-lg ml-3">Beranda</span>
         </a>

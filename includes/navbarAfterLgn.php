@@ -1,6 +1,6 @@
 <nav class="bg-ytBlue h-16 py-4 px-6 flex justify-between items-center"> 
     <div class="flex items-center ml-10"> 
-        <a href="index.php">
+        <a href="../pages/index.php">
             <img src="../assets/img/youtube.png" alt="Logo Youtube" class="h-14 mr-6" />
         </a>
     </div>
@@ -13,9 +13,11 @@
     </div>
     <div>
         <div class="flex items-center mr-9">
-            <button type="button" class="text-white focus:outline-none bg-red-500 rounded-full py-2 px-4 mr-4 hover:bg-red-600 focus:ring-2 focus:ring-red-500"><i class="fa-solid fa-video"></i></button>
-            <span class="text-white mr-4"><?php echo htmlspecialchars($username); ?></span>
-            <a href="../auth/logout.php"><button type="button" class="text-white focus:outline-none bg-red-500 rounded-full py-2 px-4 hover:bg-red-600 focus:ring-2 focus:ring-red-500">Logout</button></a>
+            <a href="../videos/upload.php"><button type="button" class="text-white focus:outline-none bg-red-500 rounded-full py-2 px-4 mr-4 hover:bg-red-600 focus:ring-2 focus:ring-red-500"><i class="fa-solid fa-video"></i></button></a>
+            <!-- $_session['user_id'] untuk mendapatkan ID user yang sedang login.
+            <?php //echo htmlspecialchars($username); ?> digunakan untuk menampilkan nama pengguna yang sedang login-->
+            <a href="../pages/profile.php?id=<?php echo $_SESSION['user_id']; ?>"><span class="text-white mr-4 mx-4""><?php echo htmlspecialchars($username); ?></span></a>
+            <a href="../auth/logout.php"><button type="button" class="text-white focus:outline-none bg-red-500 shadow-lg rounded-tl-lg rounded-br-lg py-2 px-4 ml-4 hover:bg-red-600 focus:ring-2 focus:ring-red-500">Logout</button></a>
         </div>
     </div>
 </nav>
