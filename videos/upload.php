@@ -1,14 +1,17 @@
 <?php
+//mulaikan session
 session_start();
 
-// Periksa apakah pengguna sudah login
-if (!isset($_SESSION['username'])) {
-    header("Location: ../auth/login.php");
-    exit();
-}
+//memeriksa apakah pengguna sudah login dengan memeriksa session username
+$isLoggedIn = isset($_SESSION['username']);
+//mengatur var username berdasarkan nilai true atau false $sudahLogin
+$username = $isLoggedIn ? $_SESSION['username'] : '';
 
-// Inisialisasi variabel $username
-$username = $_SESSION['username'];
+//jika pengguna belum login, redirect ke halaman login
+if (!$isLoggedIn) {
+    header("Location: ../auth/login.php");
+    exit(); //mengakhiri eksekusi
+}
 ?>
 
 <!DOCTYPE html>

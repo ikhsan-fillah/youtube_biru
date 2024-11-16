@@ -1,33 +1,32 @@
 <?php
+//memeulai session
 session_start();
+//koneksikan ke database
 require_once '../config/database.php';
 
-// Periksa apakah pengguna sudah login
-$isLoggedIn = isset($_SESSION['username']);
-$username = $isLoggedIn ? $_SESSION['username'] : '';
-
-// Jika pengguna belum login, arahkan ke halaman login
-if (!$isLoggedIn) {
-    echo 'error';
+//jika user belum login, redirect ke halaman login
+if (!isset($_SESSION['user_id'])) {
+    header("Location: ../auth/login.php");
     exit();
 }
 
-// Jika form disubmit, hapus video dari database
+//cek apakah metode requestnya POST
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-    $video_id = $_POST['video_id'];
+    $video_id = $_POST['video_id']; //mengambil vidionya dan dimasukan ke var
 
-    // Hapus video dari database
+    //query untuk menghapus video berdasarkan video_id nya
     $sql_delete = "DELETE FROM videos WHERE video_id = ?";
-    $stmt_delete = $conn->prepare($sql_delete);
-    $stmt_delete->bind_param("i", $video_id);
+    $stmt_delete = $conn->prepare($sql_delete);//menyiapkan statement untuk query
+    $stmt_delete->bind_param("i", $video_id);//mengikat parameter integer video_id ke query
+    //menjalankan query dan jika berhasil redirect ke halaman profile
     if ($stmt_delete->execute()) {
         header("Location: ../pages/profile.php");
         exit();
-    } else {
+    } else { //jika gagal, tampilkan error
         echo 'error';
     }
-    $stmt_delete->close();
+    $stmt_delete->close(); //menutup statement query delete
 }
 
-$conn->close();
+$conn->close(); //menutup koneksi database
 ?>
