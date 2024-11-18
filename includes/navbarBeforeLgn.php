@@ -1,7 +1,7 @@
 <nav class="bg-ytBlue h-16 py-4 px-6 flex justify-between items-center"> 
         <div class="flex items-center ml-10"> 
             <a href="index.php">
-                <img src="assets/img/youtube.png" alt="Logo Youtube" class="h-14 mr-6" />
+            <img src="../assets/img/youblue.png" alt="Logo Youtube" class="h-12 mr-6 bg-white rounded-lg" />
             </a>
         </div>
         <div class="flex items-center">
