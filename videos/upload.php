@@ -3,12 +3,12 @@
 session_start();
 
 //memeriksa apakah pengguna sudah login dengan memeriksa session username
-$isLoggedIn = isset($_SESSION['username']);
+$sudahLogin = isset($_SESSION['username']);
 //mengatur var username berdasarkan nilai true atau false $sudahLogin
-$username = $isLoggedIn ? $_SESSION['username'] : '';
+$username = $sudahLogin ? $_SESSION['username'] : '';
 
 //jika pengguna belum login, redirect ke halaman login
-if (!$isLoggedIn) {
+if (!$sudahLogin) {
     header("Location: ../auth/login.php");
     exit(); //mengakhiri eksekusi
 }
