@@ -31,7 +31,7 @@ if ($video_id > 0 && in_array($action, ['like', 'dislike', 'unlike', 'undislike'
     $stmt->bind_param("i", $video_id); //mengikat parameter integer video_id ke query
     //menjalankan query dan jika berhasil menampilkan pesan success
     if ($stmt->execute()) { 
-        echo 'success';
+        echo 'berhasil';
     } else {
         echo 'error';
     }
