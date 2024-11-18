@@ -29,7 +29,7 @@ if ($user_id > 0 && in_array($action, ['subscribe', 'unsubscribe'])) {
     $stmt->bind_param("ii", $_SESSION['user_id'], $user_id); //mengikat parameter integer user_id dan user_id ke query
     //menjalankan query dan jika berhasil menampilkan pesan success
     if ($stmt->execute()) {
-        echo 'success';
+        echo 'berhasil';
     } else {
         echo 'error';
     }
